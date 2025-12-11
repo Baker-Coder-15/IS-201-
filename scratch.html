@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scratch Page – Tennis</title>
+
+    <!-- Link to your custom stylesheet -->
+    <link rel="stylesheet" href="css/mystyles.css" />
+</head>
+<body class="scratch-body">
+    <header class="scratch-header" id="top">
+        <h1>Tennis Scratch Page</h1>
+        <p class="scratch-tagline">Raw HTML &amp; CSS sandbox for IS 201.</p>
+        <nav class="scratch-nav">
+            <a href="index.html">Back to Home</a>
+            <a href="about.html">About / Résumé</a>
+            <!-- On-page anchor link -->
+            <a href="#drills">Skip to Drills</a>
+        </nav>
+    </header>
+
+    <main class="scratch-container">
+        <!-- Requirement: ordered list with unordered list embedded -->
+        <section class="scratch-section">
+            <h2>How to Get Started with Tennis</h2>
+            <ol>
+                <li>
+                    Get Your Gear
+                    <ul>
+                        <li>Racquet that matches your level</li>
+                        <li>Comfortable tennis shoes</li>
+                        <li>New tennis balls</li>
+                    </ul>
+                </li>
+                <li>
+                    Learn the Basics
+                    <ul>
+                        <li>Forehand and backhand grip</li>
+                        <li>Ready position and footwork</li>
+                        <li>Simple serve motion</li>
+                    </ul>
+                </li>
+                <li>
+                    Practice with Purpose
+                    <ul>
+                        <li>Consistency over power</li>
+                        <li>Track your sessions</li>
+                        <li>Play with better players when possible</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Requirement: at least three divs for layout -->
+        <section class="scratch-section scratch-flex" id="drills">
+            <h2>My Favorite Tennis Drills</h2>
+            <div class="scratch-card">
+                <h3>Baseline Consistency</h3>
+                <p>
+                    Rally cross-court and try to get 20 balls in a row without missing. Focus on height
+                    over the net and clean footwork.
+                </p>
+            </div>
+            <div class="scratch-card">
+                <h3>Serve Targets</h3>
+                <p>
+                    Place cones in each service box and aim to hit each cone area 5 times before moving on.
+                    This builds accuracy and confidence.
+                </p>
+            </div>
+            <div class="scratch-card">
+                <h3>Approach &amp; Volley</h3>
+                <p>
+                    Have a partner feed short balls, attack the net, and finish with controlled volleys.
+                    Work on staying balanced through contact.
+                </p>
+            </div>
+        </section>
+
+        <!-- Requirement: at least one image not from the Bootstrap theme -->
+        <section class="scratch-section">
+            <h2>Court Vibes</h2>
+            <p>
+                Here’s a sample tennis image. Replace this with your own photo so it feels like your game.
+            </p>
+            <img
+                src="assets/img/tennis-photo.jpg"
+                alt="Tennis court at sunset"
+                class="scratch-image"
+            />
+            <p class="scratch-caption">
+                <strong>Reminder:</strong> Save your own tennis picture as
+                <code>tennis-photo.jpg</code> inside <code>assets/img/</code> or change the file name
+                above to match your image.
+            </p>
+        </section>
+
+        <!-- Requirement: Embedded YouTube video -->
+        <section class="scratch-section">
+            <h2>Favorite Tennis Video</h2>
+            <p>
+                This is a YouTube video I like for technique and motivation.
+            </p>
+            <div class="scratch-video-wrapper">
+                <iframe
+                    src="https://www.youtube.com/embed/KEhbYNmY3N4?si=-mFWDC8P1BCNrgao"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </section>
+
+        <!-- Requirement: link to AI-created small web app -->
+        <section class="scratch-section">
+            <h2>Workout Generator Web App</h2>
+            <p>
+                I also created a small web app with AI help. It generates a simple workout idea you can do on days
+                you’re not on the tennis court.
+            </p>
+            <a href="workout-app.html" class="scratch-button">Open the Workout Generator App</a>
+        </section>
+
+        <!-- Requirement: live Tableau embed -->
+        <section class="scratch-section">
+            <h2>Tableau Visualization</h2>
+            <p>
+                This Tableau Public visualization compares mental and physical health. It connects really well with how
+                I think about training, mindset, and overall wellness.
+            </p>
+            <div class="tableau-container">
+                <iframe
+                    src="https://public.tableau.com/views/MentalHealthvsPhysicalHealthIronViz/dashboard?:showVizHome=no&:embed=true"
+                    width="100%"
+                    height="800"
+                    style="border:none;"
+                    title="Mental vs Physical Health Dashboard"
+                ></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer class="scratch-footer">
+        <a href="#top">Back to top ↑</a>
+    </footer>
+</body>
+</html>

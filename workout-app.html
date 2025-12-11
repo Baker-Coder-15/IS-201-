@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workout Generator App</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #e5e7eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            background: rgba(15, 23, 42, 0.95);
+            border-radius: 16px;
+            padding: 2rem 2.5rem;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.7);
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 0.25rem;
+            font-size: 1.8rem;
+        }
+
+        .subtitle {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: #9ca3af;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            border: 1px solid #4b5563;
+            background: #020617;
+            color: #e5e7eb;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 999px;
+            border: none;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: #22c55e;
+            color: #022c22;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #16a34a;
+        }
+
+        .result {
+            margin-top: 1.5rem;
+            background: #020617;
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid #374151;
+            min-height: 80px;
+        }
+
+        .exercise {
+            margin-bottom: 0.75rem;
+        }
+
+        .exercise-title {
+            font-weight: 600;
+        }
+
+        .note {
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #93c5fd;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <h1>Workout Generator</h1>
+        <p class="subtitle">Pick your focus and I’ll build a quick workout or recovery session for today.</p>
+
+        <label for="focus">Training focus</label>
+        <select id="focus">
+            <option value="full">Full body</option>
+            <option value="upper">Upper body</option>
+            <option value="lower">Lower body</option>
+            <option value="conditioning">Conditioning</option>
+            <option value="recovery">Recovery / Mindfulness</option>
+        </select>
+
+        <button id="generateBtn">Generate Session</button>
+
+        <div class="result" id="result"></div>
+
+        <a href="wellness.html" class="back-link">← Back to Wellness Hub</a>
+    </div>
+
+    <script>
+        const workouts = {
+            full: [
+                [
+                    "Goblet squats – 3 sets of 10–12 reps",
+                    "Push-ups – 3 sets of 8–15 reps",
+                    "Bent-over dumbbell rows – 3 sets of 10 reps",
+                    "Plank – 3 x 30–45 seconds"
+                ],
+                [
+                    "Walking lunges – 3 x 10 steps each leg",
+                    "Dumbbell bench press – 3 x 8–10",
+                    "Lat pulldown or assisted pull-ups – 3 x 8–10",
+                    "Dead bug core – 3 x 10 each side"
+                ],
+                [
+                    "Kettlebell goblet squats – 4 x 8",
+                    "Incline push-ups – 4 x 10–12",
+                    "Single-arm rows – 3 x 10 each side",
+                    "Farmer’s carry – 3 x 30–40 seconds"
+                ]
+            ],
+            upper: [
+                [
+                    "Incline push-ups or bench press – 4 x 8–10",
+                    "One-arm dumbbell row – 4 x 8–10 each side",
+                    "Dumbbell shoulder press – 3 x 10",
+                    "Bicep curls + tricep dips superset – 3 x 12 each"
+                ],
+                [
+                    "Pull-ups or band-assisted pull-ups – 4 sets",
+                    "Dumbbell floor press – 4 x 8–10",
+                    "Lateral raises – 3 x 12–15",
+                    "Plank shoulder taps – 3 x 20 total"
+                ],
+                [
+                    "Seated cable row or band row – 3 x 10–12",
+                    "Push-ups tempo (3 sec down) – 3 x 8–10",
+                    "Face pulls – 3 x 15",
+                    "Hammer curls – 3 x 10–12"
+                ]
+            ],
+            lower: [
+                [
+                    "Back squats or goblet squats – 4 x 6–8",
+                    "Romanian deadlifts – 3 x 8–10",
+                    "Reverse lunges – 3 x 10 each leg",
+                    "Calf raises – 3 x 15–20"
+                ],
+                [
+                    "Front-foot elevated split squats – 3 x 8 each leg",
+                    "Hip thrusts or glute bridges – 4 x 10",
+                    "Leg curls or hamstring sliders – 3 x 12",
+                    "Side plank – 3 x 25–30 seconds each side"
+                ],
+                [
+                    "Leg press – 4 x 10",
+                    "Bulgarian split squats – 3 x 8 each leg",
+                    "Step-ups – 3 x 10 each leg",
+                    "Hollow body hold – 3 x 20–30 seconds"
+                ]
+            ],
+            conditioning: [
+                [
+                    "10 minutes easy warm-up (bike, jog, or row)",
+                    "10 rounds: 20 seconds fast, 40 seconds slow",
+                    "5 minutes cool-down and light stretching"
+                ],
+                [
+                    "EMOM 12 minutes: 10 kettlebell swings, 8 push-ups, 12 air squats (rotate)",
+                    "Then: 5–10 minutes easy walk or bike to recover"
+                ],
+                [
+                    "5 rounds: 200m run, 10 burpees, 20 air squats",
+                    "Rest 60–90 seconds between rounds, move at a smooth pace"
+                ]
+            ],
+            recovery: [
+                [
+                    "5 minutes of slow nasal breathing while lying on your back.",
+                    "5–8 minutes of gentle yoga flow: cat–cow, child’s pose, downward dog, low lunge.",
+                    "Finish with 2 minutes of gratitude journaling or quiet reflection."
+                ],
+                [
+                    "Set a 10-minute timer: alternate 1 minute of box breathing (4 in, 4 hold, 4 out, 4 hold) with 1 minute of light stretching.",
+                    "Then spend 5 minutes off your phone, just walking or sitting outside."
+                ],
+                [
+                    "Short evening reset: 3–5 minutes of relaxed diaphragmatic breathing,",
+                    "Then 5–10 minutes of foam rolling quads/hamstrings/calves or gentle stretching,",
+                    "End with a simple intention for tomorrow (one thing you want to do better or differently)."
+                ]
+            ]
+        };
+
+        function getRandomWorkout(focus) {
+            const options = workouts[focus];
+            const index = Math.floor(Math.random() * options.length);
+            return options[index];
+        }
+
+        document.getElementById("generateBtn").addEventListener("click", () => {
+            const focus = document.getElementById("focus").value;
+            const workout = getRandomWorkout(focus);
+
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "";
+
+            workout.forEach(line => {
+                const p = document.createElement("p");
+                p.className = "exercise";
+                const strong = document.createElement("span");
+                strong.className = "exercise-title";
+                strong.textContent = "• ";
+                p.appendChild(strong);
+                p.appendChild(document.createTextNode(line));
+                resultDiv.appendChild(p);
+            });
+
+            const note = document.createElement("p");
+            note.className = "note";
+            note.textContent = focus === "recovery"
+                ? "Take these as ideas, not rules. Move slowly, breathe deeply, and give your nervous system a chance to downshift."
+                : "Adjust weight, pace, and volume to your level. Clean form and consistency beat going too hard once.";
+            resultDiv.appendChild(note);
+        });
+    </script>
+</body>
+</html>
